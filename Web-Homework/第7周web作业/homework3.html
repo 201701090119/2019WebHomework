@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>calculator</title>
+<style>
+body {
+	padding: 0;
+	margin:0;
+}
+
+#calculator {
+	position: absolute;
+	width: 1200px;
+	height: 620px;
+	left: 50%;
+	top: 50%;
+	margin-left: -600px;
+	margin-top: -330px;
+}
+
+#calculator #cal_name {
+	margin: auto;
+	width: 800px;
+	height: 80px;
+}
+
+#calculator #cal_name h2 {
+	text-align: center;
+	font-size: 33px;
+	line-height: 30px;
+}
+
+#cal_input_left{
+	width: 80%;
+	float: left;
+}
+
+#calculator #cal_input_left #input_data {
+	margin-left: 50px;
+	padding-right:10px;
+	float: left;
+	width: 90%;
+	height: 50px;
+	font-size: 25px;
+	text-align: right;
+	border: double 1px;
+}
+
+#cal_input_right {
+	width: 20%;
+	float: right;
+}
+
+#calculator #cal_content {
+	width: 100%;
+	height: 100px;
+	margin-left:20px;
+}
+li{
+	margin:15px 25px;
+	list-style: none;
+	float: left;
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 22px;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+}
+
+li:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+</style>
+<script type = "text/javascript">
+	var count_flag = false;
+	var save_flag = false;
+	var pow_flag1 = false;
+	var pow_flag2 = false;
+	var save_data;
+	function setData(key){
+		var s1 = document.getElementById("input_data").value;
+		var ch = s1.substr(s1.length - 1, 1);
+		if(isNaN(key) && isNaN(ch) && !pow_flag1){
+			 document.getElementById("input_data").value = s1.substr(0, s1.length -1) + key;
+		}
+		else if(save_flag && !pow_flag1){
+			save_flag = false;
+			count_flag = false;
+			if(!isNaN(key)){
+				 document.getElementById("input_data").value = key;
+			}else{
+				save_data += key;
+				document.getElementById("input_data").value = save_data;
+			}
+		}
+		else if(count_flag && !pow_flag1){
+			count_flag = false;
+			if(!isNaN(key)){
+				 document.getElementById("input_data").value = key;
+			}
+			else {
+				var str = document.getElementById("input_data").value;
+				if(key == '.') document.getElementById("input_data").value = "0.";
+				else if(!isNaN(key)) document.getElementById("input_data").value = key;
+				else{
+					str += key;
+					 document.getElementById("input_data").value = str;
+				}
+			}
+		}
+		else{
+			if(pow_flag1){
+				document.getElementById("input_data").value = "";
+				pow_flag1 = false;
+			}
+			var str = document.getElementById("input_data").value;
+			if(str == "0" && !isNaN(key)) str = "";
+			if(str.length < 50){
+				str += key;
+				document.getElementById("input_data").value = str;
+			}
+		}
+	}
+	function clear_data(){
+		document.getElementById("input_data").value = "0";
+	}
+	function clear_screen(){
+		save_data = document.getElementById("input_data").value;
+		document.getElementById("input_data").value = "0";
+		save_flag = true;
+	}
+	function back(){
+		var str = document.getElementById("input_data").value;
+		if(str.length == 1) str = "0";
+		else str = str.substr(0, str.length - 1);
+		document.getElementById("input_data").value = str;
+	}
+	function count(){
+		count_flag = true;
+		var str = document.getElementById("input_data").value;
+		if(pow_flag2){
+			pow_flag2 = false;
+			var res = Math.pow(Number(save_data), Number(str));
+			document.getElementById("input_data").value = res;
+		}
+		else{
+			var res = eval(str);
+			document.getElementById("input_data").value = res;
+		}
+
+	}
+	function pow_ope(){
+		pow_flag1 = true;
+		pow_flag2 = true;
+		save_data = document.getElementById("input_data").value;
+		document.getElementById("input_data").value = "please input the power of " + save_data;
+	}
+</script>
+</head>
+<body>
+	<div id="calculator">
+		<div id="cal_name">
+			<h2>calculator</h2>
+		</div>
+		<div id="cal_input_left">
+			<input type="text" id="input_data" value="0" readonly="readonly" />
+		</div>
+		<div id="cal_input_right">
+				<li onclick = "pow_ope()" style = "margin:0; width:170px" class = "cal_blue">POWER</li>
+			</ul>
+		</div>
+		<div id="cal_content">
+			<ul>
+				<li onclick = "clear_data()" style = "width:240px" >Clear</li>
+				<li onclick = "clear_screen()" style = "margin-left:70px;width:240px">ClearSreen</li>
+				<li onclick = "back()" style = "margin-left:70px;width:240px">Back</li><br />
+				<li onclick = "setData(1)">1</li>
+				<li onclick = "setData(2)">2</li>
+				<li onclick = "setData(3)">3</li>
+				<li onclick = "setData(4)">4</li>
+				<li onclick = "setData(5)">5</li>
+				<li onclick = "setData(6)">6</li>
+				<li onclick = "setData(7)">7</li>
+				<li onclick = "setData(8)">8</li>
+				<li onclick = "setData(9)">9</li>
+				<li onclick = "setData(0)">0</li>
+				<li onclick = "setData('.')">.</li>
+				<li onclick = "count()">=</li>
+				<li onclick = "setData('+')">+</li>
+				<li onclick = "setData('-')">-</li>
+				<li onclick = "setData('*')">*</li>
+				<li onclick = "setData('/')">/</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

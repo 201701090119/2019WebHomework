@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>text moved with mouse</title>
+<script lang="javascript">
+	document.onmousemove = function(e) {
+		var div = document.getElementById("demo");
+		div.style.left = e.clientX + "px";
+		div.style.top = e.clientY + "px";
+	}
+</script>
+</head>
+<body>
+	<div id="demo" style="width: 500px;position: absolute; left: 0; top: 0;">
+		<font face="Times" size=5>this is a text</font>
+	</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+      <head>  <title> qq注册</title>
+              <script src="v.js">
+                
+              </script>
+      </head>
+      <body>
+              <form name="myform" onSubmit=" return sub()">
+               用户名*：<input type=text id="username" onblur="verify()"><span style="display:none" id="nameerror"><font color="red">姓名不能为空</font></span></br>
+               年龄*：<input type=text id="age"  onblur="verify()"><span style="display:none" id="ageerror"><font color="red">年龄不能小与17岁</font></span></br>
+               密码*：<input type=password id="pass"  onblur="verify()"><span style="display:none" id="passerror"><font color="red">密码小于8个字符</font></span></br>
+               确认密码*：<input type=password id="conpass"  onblur="verify()"><span style="display:none" id="conpasserror"><font color="red">两次密码不一致</font></span></br>
+               电子邮件*：<input type=text id="email"  onblur="verify()"><span style="display:none"id="eerror"><font color="red">电子邮件名非法</font></span></br>
+               电话：<input type=text id="phone" ></br>
+               QQ号码：<input type=text id="qq" ></br>
+               个人简介：<textarea cols=50 rows=4></textarea><p>
+               <input type=submit value="提交查询内容" >
+               <input type=reset value="重置" >
+              </form>
+      </body>
+</html>

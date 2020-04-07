@@ -1,0 +1,64 @@
+<html>
+	<head>
+		<title>hunting game</title>
+		<style>
+		body{
+			margin:auto;
+			padding: 0;
+		}
+		#position1{
+			width: 200px;
+			height: 150px;
+			position: absolute;
+			left: 0;
+			top: 100px;
+		}
+		#position2{
+			width: 200px;
+			height: 150px;
+			position: absolute;
+			left: 600px;
+			top: 150px;
+		}
+		#position3{
+			width: 200px;
+			height: 150px;
+			position: absolute;
+			left: 200px;
+			top: 350px;
+		}
+		#position4{
+			width: 200px;
+			height: 150px;
+			position: absolute;
+			left: 500px;
+			top: 500px;
+		}
+		#position5{
+			width: 200px;
+			height: 250px;
+			position: absolute;
+			left: 900px;
+			top: 250px;
+		}
+		</style>
+		<script lang="JavaScript">
+		var element = document.getElementById(name);
+		function disqppear(ele) {
+			alert("hunting success")
+			var img = document.getElementById(element);
+			img.style.display = "none";
+		}
+		</script>
+	</head>
+	<body>
+		<img src="hunt.jpg" width="100%" height="100%" style="z-index:-100;position:absolute;left:0;top:0">
+		<h1><font face="Times" size=500 color=red><center>Game Start</center></font></h1>
+		<h3><center>(please click bird to hunting)</center></h3>
+		<input type="image" id="position1" src="bird.gif" onclick="disqppear(position1)">
+		<input type="image" id="position2" src="bird.gif" onclick="disqppear(position2)">
+		<input type="image" id="position3" src="bird.gif" onclick="disqppear(position3)">
+		<input type="image" id="position4" src="bird.gif" onclick="disqppear(position4)">
+		<input type="image" id="position5" src="bird.gif" onclick="disqppear(position5)">
+	</body>
+</html>

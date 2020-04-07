@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>查询结果</title>
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+table,th,td {
+	border: 1px solid black;
+	text-align:center;
+}
+</style>
+</head>
+<body>
+	<center>
+		<h1>修改成绩</h1>
+		<hr>
+		<%
+		    StuScore  stu = (StuScore) session.getAttribute("stuScore");
+		%>
+
+		<%
+			if (stu.getName() != null) { 
+		%>
+	<form action="" method="post">
+		<table>
+			<tr>
+				<td>学号</td>
+				<td>姓名</td>
+				<td>数据结构</td>
+				<td>数据库原理</td>
+				<td>Java程序设计</td>
+				<td>web技术基础</td>
+				<td>平均分</td>
+			<tr>
+			<tr>
+				<td><input type="text" value="201701090119"  style="width:100px"></td> 
+				<td><input type="text" value="wxj"  style="width:50px"></td>
+				<td><input type="text" value="92"  style="width:50px"></td>
+				<td><input type="text" value="95 style="width:50px"></td>
+				<td><input type="text" value="99" style="width:50px"></td>
+				<td><input type="text" value="99" style="width:50px"></td>
+				<td><input type="text" value="96.25" style="width:50px"></td>
+			<tr>
+		</table>
+		<br>
+		<input type="submit" value="提交">
+		</form>
+		<%
+			} else {
+		%>
+		系统中没有查询到成绩！
+		<%
+			}
+		%>
+	</center>
+</body>
+</html>
